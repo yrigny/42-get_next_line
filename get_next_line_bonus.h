@@ -22,28 +22,24 @@
 #  define BUFFER_SIZE 50
 # endif
 
+# ifndef MAX_FDS
+#  define MAX_FDS 10
+# endif
+
 typedef struct s_list
 {
 	char			*content;
 	struct s_list	*next;
 }			t_list;
 
-typedef struct s_info
-{
-	int				fd;
-	t_list			*stash;
-	struct s_info	*next;
-}				t_info;
-
 char	*get_next_line(int fd);
-int		read_n_stash(int fd, ssize_t *p_bytes_read, t_info *fdinfo);
+int		read_n_stash(int fd, ssize_t *p_bytes_read, t_list **p_stash);
 int		count_line_len(t_list *stash);
 int		find_endl(t_list *stash);
-void	copy_line(t_list *stash, char **p_line);
+int		copy_line(t_list *stash, char **p_line);
 void	clean_stash(t_list **p_stash, int line_len);
 void	ft_lstdel_front(t_list **p_lst);
 void	ft_lstadd_back(t_list **p_lst, t_list *new);
 void	ft_memcpy(char *dest, char *src, size_t n);
-t_info	*find_stash(int fd, t_info **p_fdbook);
 
 #endif

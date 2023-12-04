@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*									      */
 /*							  :::	   ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c					:+:	 :+:	:+:   */
 /*						      +:+ +:+	      +:+     */
 /*   By: yifanr <yifanr@student.42.fr>		    +#+  +:+	   +#+	      */
 /*						  +#+#+#+#+#+	+#+	      */
 /*   Created: 2023/11/30 16:19:19 by yrigny	       #+#    #+#	      */
-/*   Updated: 2023/12/04 15:05:18 by yrigny           ###   ########.fr       */
+/*   Updated: 2023/12/03 04:30:30 by yifanr	      ###   ########.fr       */
 /*									      */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 void	free_stash(t_list **p_stash)
 {
@@ -112,7 +112,7 @@ int	read_n_stash(int fd, ssize_t *p_bytes_read, t_list **p_stash)
 
 char	*get_next_line(int fd)
 {
-	static t_list	*stashes[MAX_FDS];
+	static t_list	*stash;
 	char			*line;
 	ssize_t			bytes_read;
 	int				line_len;
@@ -124,15 +124,15 @@ char	*get_next_line(int fd)
 	malloc_ok = 1;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
 		return (line);
-	while (bytes_read > 0 && (!stashes[fd] || !find_endl(stashes[fd])))
+	while (bytes_read > 0 && (!stash || !find_endl(stash)))
 	{
-		malloc_ok = read_n_stash(fd, &bytes_read, &stashes[fd]);
-		if (!malloc_ok && stashes[fd])
-			free_stash(&stashes[fd]);
+		malloc_ok = read_n_stash(fd, &bytes_read, &stash);
+		if (!malloc_ok && stash)
+			free_stash(&stash);
 	}
-	if (stashes[fd] && (find_endl(stashes[fd]) || bytes_read < BUFFER_SIZE))
-		line_len = copy_line(stashes[fd], &line);
+	if (stash && (find_endl(stash) || bytes_read < BUFFER_SIZE))
+		line_len = copy_line(stash, &line);
 	if (line_len > 0)
-		clean_stash(&stashes[fd], line_len);
+		clean_stash(&stash, line_len);
 	return (line);
 }
