@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yrigny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 15:39:21 by yrigny            #+#    #+#             */
-/*   Updated: 2023/12/04 15:39:36 by yrigny           ###   ########.fr       */
+/*   Created: 2023/12/04 16:01:14 by yrigny            #+#    #+#             */
+/*   Updated: 2023/12/04 16:01:16 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	main(int argc, char **argv)
 {
 	char	*line = NULL;
-	int	n = 5;	// number of calls to get next line
-	int	fd;
-
-	if (argc != 2)
+	
+	if (argc < 2)
 		return (0);
-	fd = open(argv[1], O_RDONLY);
-	printf("fd = %d\n", fd);
-	for (int i = 0; i < n; i++)
+	int	fd1 = open(argv[1], O_RDONLY);
+	int	fd2 = open(argv[2], O_RDONLY);
+	int	fd3 = open(argv[3], O_RDONLY);
+	for (int i = 0; i < 5; i++)
 	{
-		line = get_next_line(fd);
-		printf("%s\n", line);
+		line = get_next_line(fd1);
+		printf("fd1 - call %d: %s\n", i + 1, line);
+		free(line);
+
+		line = get_next_line(fd2);
+		printf("fd2 - call %d: %s\n", i + 1, line);
+		free(line);
+
+		line = get_next_line(fd3);
+		printf("fd3 - call %d: %s\n", i + 1, line);
+		free(line);
 	}
-	close(fd);
+	close(fd1);
+	close(fd2);
+	close(fd3);
 	return (0);
 }
