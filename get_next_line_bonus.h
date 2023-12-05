@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yifanr <yifanr@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yrigny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/03 05:12:06 by yifanr            #+#    #+#             */
-/*   Updated: 2023/12/03 05:12:22 by yifanr           ###   ########.fr       */
+/*   Created: 2023/12/05 14:42:51 by yrigny            #+#    #+#             */
+/*   Updated: 2023/12/05 14:43:27 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # endif
 
 # ifndef MAX_FDS
-#  define MAX_FDS 10
+#  define MAX_FDS 1024
 # endif
 
 typedef struct s_list

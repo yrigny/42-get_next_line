@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*									      */
-/*							  :::	   ::::::::   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
-/*						      +:+ +:+	      +:+     */
-/*   By: yifanr <yifanr@student.42.fr>		    +#+  +:+	   +#+	      */
-/*						  +#+#+#+#+#+	+#+	      */
-/*   Created: 2023/11/30 16:19:19 by yrigny	       #+#    #+#	      */
-/*   Updated: 2023/12/04 15:05:18 by yrigny           ###   ########.fr       */
-/*									      */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yrigny <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/05 14:41:41 by yrigny            #+#    #+#             */
+/*   Updated: 2023/12/05 14:42:14 by yrigny           ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
@@ -48,7 +48,8 @@ void	clean_stash(t_list **p_stash, int line_len)
 			j = i;
 			while ((*p_stash)->content[i])
 				i++;
-			ft_memcpy((*p_stash)->content, (*p_stash)->content + j, i - j);
+			ft_memcpy((*p_stash)->content, (*p_stash)->content + j,
+					i - j);
 			return ;
 		}
 	}

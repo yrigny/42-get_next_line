@@ -6,11 +6,12 @@
 /*   By: yrigny <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:39:21 by yrigny            #+#    #+#             */
-/*   Updated: 2023/12/04 15:39:36 by yrigny           ###   ########.fr       */
+/*   Updated: 2023/12/05 13:54:50 by yrigny           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -26,6 +27,7 @@ int	main(int argc, char **argv)
 	{
 		line = get_next_line(fd);
 		printf("%s\n", line);
+		free(line);
 	}
 	close(fd);
 	return (0);
