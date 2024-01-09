@@ -2,9 +2,9 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -D BUFFER_SIZE=9999
 
-NAME = get_next_line.a
+NAME = get_next_line
 
-NAME_B = get_next_line_bonus.a
+NAME_B = get_next_line_bonus
 
 CFILES = main.c \
 	 get_next_line.c \
